@@ -34,4 +34,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+    Route::get('/league', 'LeagueController@index');
+    Route::get('/league/new', 'LeagueController@newLeague');
+    Route::post('/league/create', 'LeagueController@createLeague');
 });
