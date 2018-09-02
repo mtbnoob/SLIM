@@ -11,15 +11,17 @@
                   <form role="form" method="POST" action="{{ url('/league/create') }}">
                     {!! csrf_field() !!}
                     <label>League Name:</label><br>
-                      <input type="text" value="League Name" name="league_name"><br>
+                      <input type="text" value="League Name" name="name"><br>
                     <label>Sport</label><br>
-                      <select name="league_sport">
+                      <select name="sport">
                         <option value="hockey">Hockey</option>
                         <option value="football">Football</option>
                         <option value="soccer">Soccer</option>
                         <option value="basketball">Basketball</option>
                         <option value="basball">Baseball</option>
                       </select><br><br>
+                    <label>Description</label><br>
+                    <textarea name="description" maxlength=255></textarea><br>
                     
                     <input type="submit" value="Create Team">
                   </form>

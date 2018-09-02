@@ -9,6 +9,10 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <ul>
+                      <li><a href="{{ url('/league') }}">League Overview</a></li>
+                      <li><a href="{{ url('/league/new') }}">Create a League</a></li>
+                  </ul>
                 </div>
             </div>
         </div>
