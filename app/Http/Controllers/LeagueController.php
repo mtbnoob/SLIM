@@ -18,7 +18,7 @@ class LeagueController extends Controller
     {
         $this->middleware('auth');
     }
-  
+
     /**
      * Show the league dashboard.
      *
@@ -46,7 +46,7 @@ class LeagueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
         $data = [
           'name'        => $request->input('name'),
           'sport'       => $request->input('sport'),
@@ -56,13 +56,13 @@ class LeagueController extends Controller
             'name'  => 'required|max:255',
             'sport' => 'required'
         ]);
-      
+
         if($validator->fails()) {
           dd("handle failed validation");
-        } 
-      
+        }
+
         $league = League::create($data);
-      
+
         return view('league.success');
     }
 
@@ -74,7 +74,7 @@ class LeagueController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('league.view');
     }
 
     /**
