@@ -34,7 +34,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+    //League
     Route::get('/league', 'LeagueController@index');
     Route::get('/league/new', 'LeagueController@create');
     Route::post('/league/create', 'LeagueController@store');
+    Route::get('/league/{id}', 'LeagueController@show');
+
+    Route::get('/league/{league_id}/team', 'TeamController@index');
+    Route::get('/league/{league_id}/team/new', 'TeamController@create');
+    Route::post('/league/{league_id}/team/create', 'TeamController@store');
+    Route::get('/league/{league_id}/team/{team_id}', 'TeamController@show');
 });

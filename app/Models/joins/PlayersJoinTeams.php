@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model\joins;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -26,7 +26,11 @@ class LeagueController extends Controller
      */
     public function index()
     {
-        return view('league.overview');
+        $league_info = [];
+
+        $leagues = League::all();
+
+        return view('league.overview', ['leagues' => $leagues]);
     }
 
     /**
@@ -52,6 +56,7 @@ class LeagueController extends Controller
           'sport'       => $request->input('sport'),
           'description' => $request->input('description'),
         ];
+
         $validator = Validator::make($request->all(), [
             'name'  => 'required|max:255',
             'sport' => 'required'
@@ -74,7 +79,8 @@ class LeagueController extends Controller
      */
     public function show($id)
     {
-        return view('league.view');
+        return view('league.view', ['league' => League::findOrFail($id)]);
+
     }
 
     /**

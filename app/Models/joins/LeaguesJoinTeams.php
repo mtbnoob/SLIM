@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\joins;
 
 use Illuminate\Database\Eloquent\Model;
 
-class League extends Model
+class LeaguesJoinTeams extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,9 +12,6 @@ class League extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'sport', 'description',
+        'league_id', 'team_id'
     ];
-
-
-
 }

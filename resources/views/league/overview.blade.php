@@ -8,12 +8,13 @@
                 <div class="panel-heading">Leagues</div>
 
                 <div class="panel-body">
-                    League Placeholder List:
+                    Select the league you would like to view:
                       <ul>
-                        <li>League 1</li>
-                        <li>League 2</li>
-                        <li>League 3</li>
+                        @foreach ($leagues as $league)
+                            <li><a href="{{ url('/league/'.$league->id) }}">{{ $league->name }}</a></li>
+                        @endforeach
                       </ul>
+                      <a href="{{ url('/league/new') }}">Create a new League</a>
                 </div>
             </div>
         </div>

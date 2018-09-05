@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Create a New League</div>
                 <div class="panel-body">
-                    
+
                   <form role="form" method="POST" action="{{ url('/league/create') }}">
                     {!! csrf_field() !!}
                     <label>League Name:</label><br>
@@ -22,12 +22,12 @@
                       </select><br><br>
                     <label>Description</label><br>
                     <textarea name="description" maxlength=255></textarea><br>
-                    
-                    <input type="submit" value="Create Team">
+
+                    <input type="submit" value="Create League">
                   </form>
-                  
-                  
-                  
+
+
+
                 </div>
             </div>
         </div>
