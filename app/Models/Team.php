@@ -14,4 +14,9 @@ class Team extends Model
     protected $fillable = [
         'name', 'season_id'
     ];
+
+    public function players()
+    {
+		return $this->hasMany('App\Models\Player');
+    }
 }

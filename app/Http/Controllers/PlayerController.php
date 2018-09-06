@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
 use App\Models\League;
 use App\Models\Team;
-use App\Models\joins\LeaguesJoinTeams;
-use App\Http\Requests;
+use App\Models\Player;
+use App\Models\joins\TeamsJoinPlayers;
 use Validator;
 
-class TeamController extends Controller
+class PlayerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($league_id)
+    public function index()
     {
-        $league = League::find($league_id);
-
-        $teams     = Team::all();
-
-        return view('team.overview', ['league' => $league, 'teams' => $teams]);
+        //
     }
 
     /**
@@ -30,11 +28,12 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($league_id)
+    public function create($league_id, $team_id)
     {
         $league = League::find($league_id);
+        $team   = Team::find($team_id);
 
-        return view('team.create', ['league' => $league]);
+        return view('player.create', compact('league', 'team'));
     }
 
     /**
@@ -43,23 +42,36 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $league_id)
+    public function store(Request $request, $league_id, $team_id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'first_name' => 'required|max:255',
         ]);
 
         if($validator->fails()) {
           dd("handle failed validation");
         }
 
-        $team             = Team::create(['name' => $request->input('name')]);
-        $league           = League::find($league_id);
-        $league_join_team = LeaguesJoinTeams::create(['league_id' => $league->id, 'team_id' => $team->id]);
+        $league = League::find($league_id);
+        $team   = Team::find($team_id);
 
-        $message = "{$team->name} has successfully been added to {$league->name}.";
+        $player_data = [
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'number' => $request->input('number')
+        ];
+        $player = Player::create($player_data);
 
-        return view('generic_success', ['message' => $message]);
+        $join_data = [
+            'team_id'   => $team->id,
+            'player_id' => $player->id
+        ];
+
+        $teams_join_players = TeamsJoinPlayers::create($join_data);
+
+        $message = "{$player->first_name} has successfully been added to {$team->name}";
+
+        return view('generic_success', compact('message'));
     }
 
     /**
@@ -68,14 +80,9 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($league_id, $team_id)
+    public function show($id)
     {
-        $league = League::find($league_id);
-        $team   = Team::find($team_id);
-
-        $players = [];
-
-        return view('team.view', compact('league', 'team', 'players'));
+        //
     }
 
     /**

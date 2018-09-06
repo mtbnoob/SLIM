@@ -13,6 +13,7 @@ return array(
     'CreatePlayersJoinTeamsTable' => $baseDir . '/database/migrations/2018_08_30_065327_create_players_join_teams_table.php',
     'CreatePlayersTable' => $baseDir . '/database/migrations/2018_08_30_065306_create_players_table.php',
     'CreateSportsTable' => $baseDir . '/database/migrations/2018_08_30_062206_create_sports_table.php',
+    'CreateTeamsJoinPlayersTable' => $baseDir . '/database/migrations/2018_09_06_064302_create_teams_join_players_table.php',
     'CreateTeamsTable' => $baseDir . '/database/migrations/2018_08_30_065210_create_teams_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

@@ -35,14 +35,19 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-    //League
+    //Leagues
     Route::get('/league', 'LeagueController@index');
     Route::get('/league/new', 'LeagueController@create');
     Route::post('/league/create', 'LeagueController@store');
     Route::get('/league/{id}', 'LeagueController@show');
 
+    //Teams
     Route::get('/league/{league_id}/team', 'TeamController@index');
     Route::get('/league/{league_id}/team/new', 'TeamController@create');
     Route::post('/league/{league_id}/team/create', 'TeamController@store');
     Route::get('/league/{league_id}/team/{team_id}', 'TeamController@show');
+
+    //Players
+    Route::get('/league/{league_id}/team/{team_id}/player/new', 'PlayerController@create');
+    Route::post('/league/{league_id}/team/{team_id}/player/create', 'PlayerController@store');
 });
